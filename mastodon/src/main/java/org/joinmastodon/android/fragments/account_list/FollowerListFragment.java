@@ -12,11 +12,21 @@ public class FollowerListFragment extends AccountRelatedAccountListFragment{
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		String cipherName3355 =  "DES";
+		try{
+			android.util.Log.d("cipherName-3355", javax.crypto.Cipher.getInstance(cipherName3355).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		setSubtitle(getResources().getQuantityString(R.plurals.x_followers, (int)(account.followersCount%1000), account.followersCount));
 	}
 
 	@Override
 	public HeaderPaginationRequest<Account> onCreateRequest(String maxID, int count){
+		String cipherName3356 =  "DES";
+		try{
+			android.util.Log.d("cipherName-3356", javax.crypto.Cipher.getInstance(cipherName3356).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		return new GetAccountFollowers(account.id, maxID, count);
 	}
 }

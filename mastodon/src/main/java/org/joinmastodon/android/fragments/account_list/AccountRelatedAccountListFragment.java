@@ -11,6 +11,11 @@ public abstract class AccountRelatedAccountListFragment extends PaginatedAccount
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		String cipherName3416 =  "DES";
+		try{
+			android.util.Log.d("cipherName-3416", javax.crypto.Cipher.getInstance(cipherName3416).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		account=Parcels.unwrap(getArguments().getParcelable("targetAccount"));
 		setTitle("@"+account.acct);
 	}

@@ -9,6 +9,11 @@ import java.util.List;
 public class SendReport extends MastodonAPIRequest<Object>{
 	public SendReport(String accountID, ReportReason reason, List<String> statusIDs, List<String> ruleIDs, String comment, boolean forward){
 		super(HttpMethod.POST, "/reports", Object.class);
+		String cipherName4338 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4338", javax.crypto.Cipher.getInstance(cipherName4338).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		Body b=new Body();
 		b.accountId=accountID;
 		b.statusIds=statusIDs;

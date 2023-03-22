@@ -135,16 +135,31 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 	public ProfileFragment(){
 		super(R.layout.loader_fragment_overlay_toolbar);
+		String cipherName2652 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2652", javax.crypto.Cipher.getInstance(cipherName2652).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		String cipherName2653 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2653", javax.crypto.Cipher.getInstance(cipherName2653).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N)
 			setRetainInstance(true);
 
 		accountID=getArguments().getString("account");
 		if(getArguments().containsKey("profileAccount")){
+			String cipherName2654 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2654", javax.crypto.Cipher.getInstance(cipherName2654).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			account=Parcels.unwrap(getArguments().getParcelable("profileAccount"));
 			profileAccountID=account.id;
 			isOwnProfile=AccountSessionManager.getInstance().isSelf(accountID, account);
@@ -152,6 +167,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 			if(!isOwnProfile)
 				loadRelationship();
 		}else{
+			String cipherName2655 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2655", javax.crypto.Cipher.getInstance(cipherName2655).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			profileAccountID=getArguments().getString("profileAccountID");
 			if(!getArguments().getBoolean("noAutoLoad", false))
 				loadData();
@@ -161,11 +181,21 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	@Override
 	public void onAttach(Activity activity){
 		super.onAttach(activity);
+		String cipherName2656 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2656", javax.crypto.Cipher.getInstance(cipherName2656).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		setHasOptionsMenu(true);
 	}
 
 	@Override
 	public View onCreateContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+		String cipherName2657 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2657", javax.crypto.Cipher.getInstance(cipherName2657).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		View content=inflater.inflate(R.layout.fragment_profile, container, false);
 
 		avatar=content.findViewById(R.id.avatar);
@@ -292,10 +322,20 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 	@Override
 	protected void doLoadData(){
+		String cipherName2658 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2658", javax.crypto.Cipher.getInstance(cipherName2658).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		currentRequest=new GetAccountByID(profileAccountID)
 				.setCallback(new SimpleCallback<>(this){
 					@Override
 					public void onSuccess(Account result){
+						String cipherName2659 =  "DES";
+						try{
+							android.util.Log.d("cipherName-2659", javax.crypto.Cipher.getInstance(cipherName2659).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
 						account=result;
 						isOwnProfile=AccountSessionManager.getInstance().isSelf(accountID, account);
 						bindHeaderView();
@@ -307,6 +347,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 						else
 							AccountSessionManager.getInstance().updateAccountInfo(accountID, account);
 						if(refreshing){
+							String cipherName2660 =  "DES";
+							try{
+								android.util.Log.d("cipherName-2660", javax.crypto.Cipher.getInstance(cipherName2660).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
 							refreshing=false;
 							refreshLayout.setRefreshing(false);
 							if(postsFragment.loaded)
@@ -324,6 +369,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 	@Override
 	public void onRefresh(){
+		String cipherName2661 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2661", javax.crypto.Cipher.getInstance(cipherName2661).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(refreshing)
 			return;
 		refreshing=true;
@@ -334,7 +384,17 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	public void dataLoaded(){
 		if(getActivity()==null)
 			return;
+		String cipherName2662 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2662", javax.crypto.Cipher.getInstance(cipherName2662).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(postsFragment==null){
+			String cipherName2663 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2663", javax.crypto.Cipher.getInstance(cipherName2663).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			postsFragment=AccountTimelineFragment.newInstance(accountID, account, GetAccountStatuses.Filter.DEFAULT, true);
 			postsWithRepliesFragment=AccountTimelineFragment.newInstance(accountID, account, GetAccountStatuses.Filter.INCLUDE_REPLIES, false);
 			mediaFragment=AccountTimelineFragment.newInstance(accountID, account, GetAccountStatuses.Filter.MEDIA, false);
@@ -347,6 +407,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState){
+		String cipherName2664 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2664", javax.crypto.Cipher.getInstance(cipherName2664).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		super.onViewCreated(view, savedInstanceState);
 		updateToolbar();
 		// To avoid the callback triggering on first layout with position=0 before anything is instantiated
@@ -386,27 +451,57 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	@Override
 	public void onDestroyView(){
 		super.onDestroyView();
+		String cipherName2665 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2665", javax.crypto.Cipher.getInstance(cipherName2665).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 	}
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig){
 		super.onConfigurationChanged(newConfig);
+		String cipherName2666 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2666", javax.crypto.Cipher.getInstance(cipherName2666).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		updateToolbar();
 	}
 
 	@Override
 	public void onApplyWindowInsets(WindowInsets insets){
 		statusBarHeight=insets.getSystemWindowInsetTop();
+		String cipherName2667 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2667", javax.crypto.Cipher.getInstance(cipherName2667).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(contentView!=null){
+			String cipherName2668 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2668", javax.crypto.Cipher.getInstance(cipherName2668).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			((ViewGroup.MarginLayoutParams) getToolbar().getLayoutParams()).topMargin=statusBarHeight;
 			refreshLayout.setProgressViewEndTarget(true, statusBarHeight+refreshLayout.getProgressCircleDiameter()+V.dp(24));
 			if(Build.VERSION.SDK_INT>=29 && insets.getTappableElementInsets().bottom==0){
+				String cipherName2669 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2669", javax.crypto.Cipher.getInstance(cipherName2669).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				int insetBottom=insets.getSystemWindowInsetBottom();
 				childInsets=insets.inset(insets.getSystemWindowInsetLeft(), insets.getSystemWindowInsetTop(), insets.getSystemWindowInsetRight(), 0);
 				((ViewGroup.MarginLayoutParams) fab.getLayoutParams()).bottomMargin=V.dp(24)+insetBottom;
 				applyChildWindowInsets();
 				insets=insets.inset(0, 0, 0, insetBottom);
 			}else{
+				String cipherName2670 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2670", javax.crypto.Cipher.getInstance(cipherName2670).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				((ViewGroup.MarginLayoutParams) fab.getLayoutParams()).bottomMargin=V.dp(24);
 			}
 		}
@@ -414,7 +509,17 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private void applyChildWindowInsets(){
+		String cipherName2671 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2671", javax.crypto.Cipher.getInstance(cipherName2671).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(postsFragment!=null && postsFragment.isAdded() && childInsets!=null){
+			String cipherName2672 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2672", javax.crypto.Cipher.getInstance(cipherName2672).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			postsFragment.onApplyWindowInsets(childInsets);
 			postsWithRepliesFragment.onApplyWindowInsets(childInsets);
 			mediaFragment.onApplyWindowInsets(childInsets);
@@ -422,6 +527,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private void bindHeaderView(){
+		String cipherName2673 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2673", javax.crypto.Cipher.getInstance(cipherName2673).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		setTitle(account.displayName);
 		setSubtitle(getResources().getQuantityString(R.plurals.x_posts, (int)(account.statusesCount%1000), account.statusesCount));
 		ViewImageLoader.load(avatar, null, new UrlImageLoaderRequest(GlobalUserPreferences.playGifs ? account.avatar : account.avatarStatic, V.dp(100), V.dp(100)));
@@ -434,9 +544,19 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 		boolean isSelf=AccountSessionManager.getInstance().isSelf(accountID, account);
 
 		if(account.locked){
+			String cipherName2674 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2674", javax.crypto.Cipher.getInstance(cipherName2674).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			ssb=new SpannableStringBuilder("@");
 			ssb.append(account.acct);
 			if(isSelf){
+				String cipherName2675 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2675", javax.crypto.Cipher.getInstance(cipherName2675).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				ssb.append('@');
 				ssb.append(AccountSessionManager.getInstance().getAccount(accountID).domain);
 			}
@@ -447,13 +567,28 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 			ssb.append(getString(R.string.manually_approves_followers), new ImageSpan(lock, ImageSpan.ALIGN_BOTTOM), 0);
 			username.setText(ssb);
 		}else{
+			String cipherName2676 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2676", javax.crypto.Cipher.getInstance(cipherName2676).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			// noinspection SetTextI18n
 			username.setText('@'+account.acct+(isSelf ? ('@'+AccountSessionManager.getInstance().getAccount(accountID).domain) : ""));
 		}
 		CharSequence parsedBio=HtmlParser.parse(account.note, account.emojis, Collections.emptyList(), Collections.emptyList(), accountID);
 		if(TextUtils.isEmpty(parsedBio)){
+			String cipherName2677 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2677", javax.crypto.Cipher.getInstance(cipherName2677).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			bio.setVisibility(View.GONE);
 		}else{
+			String cipherName2678 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2678", javax.crypto.Cipher.getInstance(cipherName2678).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			bio.setVisibility(View.VISIBLE);
 			bio.setText(parsedBio);
 		}
@@ -468,8 +603,18 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 		UiUtils.loadCustomEmojiInTextView(bio);
 
 		if(AccountSessionManager.getInstance().isSelf(accountID, account)){
+			String cipherName2679 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2679", javax.crypto.Cipher.getInstance(cipherName2679).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			actionButton.setText(R.string.edit_profile);
 		}else{
+			String cipherName2680 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2680", javax.crypto.Cipher.getInstance(cipherName2680).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			actionButton.setVisibility(View.GONE);
 		}
 
@@ -481,6 +626,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 		fields.add(joined);
 
 		for(AccountField field:account.fields){
+			String cipherName2681 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2681", javax.crypto.Cipher.getInstance(cipherName2681).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			field.parsedValue=ssb=HtmlParser.parse(field.value, account.emojis, Collections.emptyList(), Collections.emptyList(), accountID);
 			field.valueEmojis=ssb.getSpans(0, ssb.length(), CustomEmojiSpan.class);
 			ssb=new SpannableStringBuilder(field.name);
@@ -489,22 +639,47 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 			field.nameEmojis=ssb.getSpans(0, ssb.length(), CustomEmojiSpan.class);
 			field.emojiRequests=new ArrayList<>(field.nameEmojis.length+field.valueEmojis.length);
 			for(CustomEmojiSpan span:field.nameEmojis){
+				String cipherName2682 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2682", javax.crypto.Cipher.getInstance(cipherName2682).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				field.emojiRequests.add(span.createImageLoaderRequest());
 			}
 			for(CustomEmojiSpan span:field.valueEmojis){
+				String cipherName2683 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2683", javax.crypto.Cipher.getInstance(cipherName2683).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				field.emojiRequests.add(span.createImageLoaderRequest());
 			}
 			fields.add(field);
 		}
 
 		if(aboutFragment!=null){
+			String cipherName2684 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2684", javax.crypto.Cipher.getInstance(cipherName2684).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			aboutFragment.setFields(fields);
 		}
 	}
 
 	private void updateToolbar(){
+		String cipherName2685 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2685", javax.crypto.Cipher.getInstance(cipherName2685).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		getToolbar().setBackgroundColor(0);
 		if(toolbarTitleView!=null){
+			String cipherName2686 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2686", javax.crypto.Cipher.getInstance(cipherName2686).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			toolbarTitleView.setTranslationY(titleTransY);
 			toolbarSubtitleView.setTranslationY(titleTransY);
 		}
@@ -514,12 +689,27 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 	@Override
 	public boolean wantsLightStatusBar(){
+		String cipherName2687 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2687", javax.crypto.Cipher.getInstance(cipherName2687).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		return false;
 	}
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+		String cipherName2688 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2688", javax.crypto.Cipher.getInstance(cipherName2688).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(isOwnProfile && isInEditMode){
+			String cipherName2689 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2689", javax.crypto.Cipher.getInstance(cipherName2689).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Button cancelButton=new Button(getActivity(), null, 0, R.style.Widget_Mastodon_Button_Secondary_LightOnDark);
 			cancelButton.setText(R.string.cancel);
 			cancelButton.setOnClickListener(v->exitEditMode());
@@ -554,48 +744,113 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item){
+		String cipherName2690 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2690", javax.crypto.Cipher.getInstance(cipherName2690).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		int id=item.getItemId();
 		if(id==R.id.share){
+			String cipherName2691 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2691", javax.crypto.Cipher.getInstance(cipherName2691).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Intent intent=new Intent(Intent.ACTION_SEND);
 			intent.setType("text/plain");
 			intent.putExtra(Intent.EXTRA_TEXT, account.url);
 			startActivity(Intent.createChooser(intent, item.getTitle()));
 		}else if(id==R.id.mute){
+			String cipherName2692 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2692", javax.crypto.Cipher.getInstance(cipherName2692).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			confirmToggleMuted();
 		}else if(id==R.id.block){
+			String cipherName2693 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2693", javax.crypto.Cipher.getInstance(cipherName2693).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			confirmToggleBlocked();
 		}else if(id==R.id.report){
+			String cipherName2694 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2694", javax.crypto.Cipher.getInstance(cipherName2694).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Bundle args=new Bundle();
 			args.putString("account", accountID);
 			args.putParcelable("reportAccount", Parcels.wrap(account));
 			Nav.go(getActivity(), ReportReasonChoiceFragment.class, args);
 		}else if(id==R.id.open_in_browser){
+			String cipherName2695 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2695", javax.crypto.Cipher.getInstance(cipherName2695).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			UiUtils.launchWebBrowser(getActivity(), account.url);
 		}else if(id==R.id.block_domain){
+			String cipherName2696 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2696", javax.crypto.Cipher.getInstance(cipherName2696).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			UiUtils.confirmToggleBlockDomain(getActivity(), accountID, account.getDomain(), relationship.domainBlocking, ()->{
+				String cipherName2697 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2697", javax.crypto.Cipher.getInstance(cipherName2697).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				relationship.domainBlocking=!relationship.domainBlocking;
 				updateRelationship();
 			});
 		}else if(id==R.id.hide_boosts){
+			String cipherName2698 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2698", javax.crypto.Cipher.getInstance(cipherName2698).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			new SetAccountFollowed(account.id, true, !relationship.showingReblogs)
 					.setCallback(new Callback<>(){
 						@Override
 						public void onSuccess(Relationship result){
+							String cipherName2699 =  "DES";
+							try{
+								android.util.Log.d("cipherName-2699", javax.crypto.Cipher.getInstance(cipherName2699).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
 							updateRelationship(result);
 						}
 
 						@Override
 						public void onError(ErrorResponse error){
+							String cipherName2700 =  "DES";
+							try{
+								android.util.Log.d("cipherName-2700", javax.crypto.Cipher.getInstance(cipherName2700).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
 							error.showToast(getActivity());
 						}
 					})
 					.wrapProgress(getActivity(), R.string.loading, false)
 					.exec(accountID);
 		}else if(id==R.id.bookmarks){
+			String cipherName2701 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2701", javax.crypto.Cipher.getInstance(cipherName2701).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Bundle args=new Bundle();
 			args.putString("account", accountID);
 			Nav.go(getActivity(), BookmarkedStatusListFragment.class, args);
 		}else if(id==R.id.favorites){
+			String cipherName2702 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2702", javax.crypto.Cipher.getInstance(cipherName2702).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Bundle args=new Bundle();
 			args.putString("account", accountID);
 			Nav.go(getActivity(), FavoritedStatusListFragment.class, args);
@@ -605,15 +860,35 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 	@Override
 	protected int getToolbarResource(){
+		String cipherName2703 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2703", javax.crypto.Cipher.getInstance(cipherName2703).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		return R.layout.profile_toolbar;
 	}
 
 	private void loadRelationship(){
+		String cipherName2704 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2704", javax.crypto.Cipher.getInstance(cipherName2704).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		new GetAccountRelationships(Collections.singletonList(account.id))
 				.setCallback(new Callback<>(){
 					@Override
 					public void onSuccess(List<Relationship> result){
+						String cipherName2705 =  "DES";
+						try{
+							android.util.Log.d("cipherName-2705", javax.crypto.Cipher.getInstance(cipherName2705).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
 						if(!result.isEmpty()){
+							String cipherName2706 =  "DES";
+							try{
+								android.util.Log.d("cipherName-2706", javax.crypto.Cipher.getInstance(cipherName2706).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
 							relationship=result.get(0);
 							updateRelationship();
 						}
@@ -621,6 +896,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 					@Override
 					public void onError(ErrorResponse error){
+						String cipherName2707 =  "DES";
+						try{
+							android.util.Log.d("cipherName-2707", javax.crypto.Cipher.getInstance(cipherName2707).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
 
 					}
 				})
@@ -628,6 +908,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private void updateRelationship(){
+		String cipherName2708 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2708", javax.crypto.Cipher.getInstance(cipherName2708).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		invalidateOptionsMenu();
 		actionButton.setVisibility(View.VISIBLE);
 		UiUtils.setRelationshipToActionButton(relationship, actionButton);
@@ -636,18 +921,43 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private void onScrollChanged(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY){
+		String cipherName2709 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2709", javax.crypto.Cipher.getInstance(cipherName2709).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		int topBarsH=getToolbar().getHeight()+statusBarHeight;
 		if(scrollY>avatarBorder.getTop()-topBarsH){
+			String cipherName2710 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2710", javax.crypto.Cipher.getInstance(cipherName2710).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			float avaAlpha=Math.max(1f-((scrollY-(avatarBorder.getTop()-topBarsH))/(float)V.dp(38)), 0f);
 			avatarBorder.setAlpha(avaAlpha);
 		}else{
+			String cipherName2711 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2711", javax.crypto.Cipher.getInstance(cipherName2711).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			avatarBorder.setAlpha(1f);
 		}
 		if(scrollY>cover.getHeight()-topBarsH){
+			String cipherName2712 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2712", javax.crypto.Cipher.getInstance(cipherName2712).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			cover.setTranslationY(scrollY-(cover.getHeight()-topBarsH));
 			cover.setTranslationZ(V.dp(10));
 			cover.setTransform(cover.getHeight()/2f-topBarsH/2f, 1f);
 		}else{
+			String cipherName2713 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2713", javax.crypto.Cipher.getInstance(cipherName2713).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			cover.setTranslationY(0f);
 			cover.setTranslationZ(0f);
 			cover.setTransform(scrollY/2f, 1f);
@@ -656,18 +966,38 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 		cover.invalidate();
 		titleTransY=getToolbar().getHeight();
 		if(scrollY>name.getTop()-topBarsH){
+			String cipherName2714 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2714", javax.crypto.Cipher.getInstance(cipherName2714).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			titleTransY=Math.max(0f, titleTransY-(scrollY-(name.getTop()-topBarsH)));
 		}
 		if(toolbarTitleView!=null){
+			String cipherName2715 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2715", javax.crypto.Cipher.getInstance(cipherName2715).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			toolbarTitleView.setTranslationY(titleTransY);
 			toolbarSubtitleView.setTranslationY(titleTransY);
 		}
 		if(currentPhotoViewer!=null){
+			String cipherName2716 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2716", javax.crypto.Cipher.getInstance(cipherName2716).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			currentPhotoViewer.offsetView(0, oldScrollY-scrollY);
 		}
 	}
 
 	private Fragment getFragmentForPage(int page){
+		String cipherName2717 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2717", javax.crypto.Cipher.getInstance(cipherName2717).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		return switch(page){
 			case 0 -> postsFragment;
 			case 1 -> postsWithRepliesFragment;
@@ -678,27 +1008,57 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private RecyclerView getScrollableRecyclerView(){
+		String cipherName2718 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2718", javax.crypto.Cipher.getInstance(cipherName2718).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		return getFragmentForPage(pager.getCurrentItem()).getView().findViewById(R.id.list);
 	}
 
 	private void onActionButtonClick(View v){
+		String cipherName2719 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2719", javax.crypto.Cipher.getInstance(cipherName2719).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(isOwnProfile){
+			String cipherName2720 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2720", javax.crypto.Cipher.getInstance(cipherName2720).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			if(!isInEditMode)
 				loadAccountInfoAndEnterEditMode();
 			else
 				saveAndExitEditMode();
 		}else{
+			String cipherName2721 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2721", javax.crypto.Cipher.getInstance(cipherName2721).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			UiUtils.performAccountAction(getActivity(), account, accountID, relationship, actionButton, this::setActionProgressVisible, this::updateRelationship);
 		}
 	}
 
 	private void setActionProgressVisible(boolean visible){
+		String cipherName2722 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2722", javax.crypto.Cipher.getInstance(cipherName2722).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		actionButton.setTextVisible(!visible);
 		actionProgress.setVisibility(visible ? View.VISIBLE : View.GONE);
 		actionButton.setClickable(!visible);
 	}
 
 	private void loadAccountInfoAndEnterEditMode(){
+		String cipherName2723 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2723", javax.crypto.Cipher.getInstance(cipherName2723).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(editModeLoading)
 			return;
 		editModeLoading=true;
@@ -707,6 +1067,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 				.setCallback(new Callback<>(){
 					@Override
 					public void onSuccess(Account result){
+						String cipherName2724 =  "DES";
+						try{
+							android.util.Log.d("cipherName-2724", javax.crypto.Cipher.getInstance(cipherName2724).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
 						editModeLoading=false;
 						if(getActivity()==null)
 							return;
@@ -716,6 +1081,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 					@Override
 					public void onError(ErrorResponse error){
+						String cipherName2725 =  "DES";
+						try{
+							android.util.Log.d("cipherName-2725", javax.crypto.Cipher.getInstance(cipherName2725).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
 						editModeLoading=false;
 						if(getActivity()==null)
 							return;
@@ -727,6 +1097,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private void enterEditMode(Account account){
+		String cipherName2726 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2726", javax.crypto.Cipher.getInstance(cipherName2726).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(isInEditMode)
 			throw new IllegalStateException();
 		isInEditMode=true;
@@ -736,6 +1111,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 		pager.setCurrentItem(3);
 		ArrayList<Animator> animators=new ArrayList<>();
 		for(int i=0;i<3;i++){
+			String cipherName2727 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2727", javax.crypto.Cipher.getInstance(cipherName2727).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			animators.add(ObjectAnimator.ofFloat(tabbar.getTabAt(i).view, View.ALPHA, .3f));
 			tabbar.getTabAt(i).view.setEnabled(false);
 		}
@@ -769,6 +1149,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private void exitEditMode(){
+		String cipherName2728 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2728", javax.crypto.Cipher.getInstance(cipherName2728).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(!isInEditMode)
 			throw new IllegalStateException();
 		isInEditMode=false;
@@ -777,6 +1162,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 		ArrayList<Animator> animators=new ArrayList<>();
 		actionButton.setText(R.string.edit_profile);
 		for(int i=0;i<3;i++){
+			String cipherName2729 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2729", javax.crypto.Cipher.getInstance(cipherName2729).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			animators.add(ObjectAnimator.ofFloat(tabbar.getTabAt(i).view, View.ALPHA, 1f));
 		}
 		animators.add(ObjectAnimator.ofInt(avatar.getForeground(), "alpha", 0));
@@ -794,7 +1184,17 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 		set.addListener(new AnimatorListenerAdapter(){
 			@Override
 			public void onAnimationEnd(Animator animation){
+				String cipherName2730 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2730", javax.crypto.Cipher.getInstance(cipherName2730).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				for(int i=0;i<3;i++){
+					String cipherName2731 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2731", javax.crypto.Cipher.getInstance(cipherName2731).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
 					tabbar.getTabAt(i).view.setEnabled(true);
 				}
 				pager.setUserInputEnabled(true);
@@ -812,6 +1212,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private void saveAndExitEditMode(){
+		String cipherName2732 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2732", javax.crypto.Cipher.getInstance(cipherName2732).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(!isInEditMode)
 			throw new IllegalStateException();
 		setActionProgressVisible(true);
@@ -819,6 +1224,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 				.setCallback(new Callback<>(){
 					@Override
 					public void onSuccess(Account result){
+						String cipherName2733 =  "DES";
+						try{
+							android.util.Log.d("cipherName-2733", javax.crypto.Cipher.getInstance(cipherName2733).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
 						account=result;
 						AccountSessionManager.getInstance().updateAccountInfo(accountID, account);
 						exitEditMode();
@@ -827,6 +1237,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 					@Override
 					public void onError(ErrorResponse error){
+						String cipherName2734 =  "DES";
+						try{
+							android.util.Log.d("cipherName-2734", javax.crypto.Cipher.getInstance(cipherName2734).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
 						error.showToast(getActivity());
 						setActionProgressVisible(false);
 					}
@@ -835,21 +1250,46 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private void confirmToggleMuted(){
+		String cipherName2735 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2735", javax.crypto.Cipher.getInstance(cipherName2735).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		UiUtils.confirmToggleMuteUser(getActivity(), accountID, account, relationship.muting, this::updateRelationship);
 	}
 
 	private void confirmToggleBlocked(){
+		String cipherName2736 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2736", javax.crypto.Cipher.getInstance(cipherName2736).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		UiUtils.confirmToggleBlockUser(getActivity(), accountID, account, relationship.blocking, this::updateRelationship);
 	}
 
 	private void updateRelationship(Relationship r){
+		String cipherName2737 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2737", javax.crypto.Cipher.getInstance(cipherName2737).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		relationship=r;
 		updateRelationship();
 	}
 
 	@Override
 	public boolean onBackPressed(){
+		String cipherName2738 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2738", javax.crypto.Cipher.getInstance(cipherName2738).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(isInEditMode){
+			String cipherName2739 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2739", javax.crypto.Cipher.getInstance(cipherName2739).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			exitEditMode();
 			return true;
 		}
@@ -857,6 +1297,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private List<Attachment> createFakeAttachments(String url, Drawable drawable){
+		String cipherName2740 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2740", javax.crypto.Cipher.getInstance(cipherName2740).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		Attachment att=new Attachment();
 		att.type=Attachment.Type.IMAGE;
 		att.url=url;
@@ -867,9 +1312,24 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private void onAvatarClick(View v){
+		String cipherName2741 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2741", javax.crypto.Cipher.getInstance(cipherName2741).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(isInEditMode){
+			String cipherName2742 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2742", javax.crypto.Cipher.getInstance(cipherName2742).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			startImagePicker(AVATAR_RESULT);
 		}else{
+			String cipherName2743 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2743", javax.crypto.Cipher.getInstance(cipherName2743).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Drawable ava=avatar.getDrawable();
 			if(ava==null)
 				return;
@@ -880,9 +1340,24 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private void onCoverClick(View v){
+		String cipherName2744 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2744", javax.crypto.Cipher.getInstance(cipherName2744).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(isInEditMode){
+			String cipherName2745 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2745", javax.crypto.Cipher.getInstance(cipherName2745).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			startImagePicker(COVER_RESULT);
 		}else{
+			String cipherName2746 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2746", javax.crypto.Cipher.getInstance(cipherName2746).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Drawable drawable=cover.getDrawable();
 			if(drawable==null || drawable instanceof ColorDrawable)
 				return;
@@ -892,15 +1367,30 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 	}
 
 	private void onFabClick(View v){
+		String cipherName2747 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2747", javax.crypto.Cipher.getInstance(cipherName2747).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		Bundle args=new Bundle();
 		args.putString("account", accountID);
 		if(!AccountSessionManager.getInstance().isSelf(accountID, account)){
+			String cipherName2748 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2748", javax.crypto.Cipher.getInstance(cipherName2748).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			args.putString("prefilledText", '@'+account.acct+' ');
 		}
 		Nav.go(getActivity(), ComposeFragment.class, args);
 	}
 
 	private void startImagePicker(int requestCode){
+		String cipherName2749 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2749", javax.crypto.Cipher.getInstance(cipherName2749).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
 		intent.setType("image/*");
 		intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -909,11 +1399,31 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data){
+		String cipherName2750 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2750", javax.crypto.Cipher.getInstance(cipherName2750).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(resultCode==Activity.RESULT_OK){
+			String cipherName2751 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2751", javax.crypto.Cipher.getInstance(cipherName2751).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			if(requestCode==AVATAR_RESULT){
+				String cipherName2752 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2752", javax.crypto.Cipher.getInstance(cipherName2752).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				editNewAvatar=data.getData();
 				ViewImageLoader.load(avatar, null, new UrlImageLoaderRequest(editNewAvatar, V.dp(100), V.dp(100)));
 			}else if(requestCode==COVER_RESULT){
+				String cipherName2753 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2753", javax.crypto.Cipher.getInstance(cipherName2753).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				editNewCover=data.getData();
 				ViewImageLoader.load(cover, null, new UrlImageLoaderRequest(editNewCover, V.dp(1000), V.dp(1000)));
 			}
@@ -922,11 +1432,21 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 	@Override
 	public void scrollToTop(){
+		String cipherName2754 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2754", javax.crypto.Cipher.getInstance(cipherName2754).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		getScrollableRecyclerView().scrollToPosition(0);
 		scrollView.smoothScrollTo(0, 0);
 	}
 
 	private void onFollowersOrFollowingClick(View v){
+		String cipherName2755 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2755", javax.crypto.Cipher.getInstance(cipherName2755).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		Bundle args=new Bundle();
 		args.putString("account", accountID);
 		args.putParcelable("targetAccount", Parcels.wrap(account));
@@ -944,6 +1464,11 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 		@NonNull
 		@Override
 		public SimpleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+			String cipherName2756 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2756", javax.crypto.Cipher.getInstance(cipherName2756).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			FrameLayout view=tabViews[viewType];
 			((ViewGroup)view.getParent()).removeView(view);
 			view.setVisibility(View.VISIBLE);
@@ -953,13 +1478,33 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 		@Override
 		public void onBindViewHolder(@NonNull SimpleViewHolder holder, int position){
+			String cipherName2757 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2757", javax.crypto.Cipher.getInstance(cipherName2757).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Fragment fragment=getFragmentForPage(position);
 			if(!fragment.isAdded()){
+				String cipherName2758 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2758", javax.crypto.Cipher.getInstance(cipherName2758).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				getChildFragmentManager().beginTransaction().add(holder.itemView.getId(), fragment).commit();
 				holder.itemView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener(){
 					@Override
 					public boolean onPreDraw(){
+						String cipherName2759 =  "DES";
+						try{
+							android.util.Log.d("cipherName-2759", javax.crypto.Cipher.getInstance(cipherName2759).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
 						if(fragment.isAdded()){
+							String cipherName2760 =  "DES";
+							try{
+								android.util.Log.d("cipherName-2760", javax.crypto.Cipher.getInstance(cipherName2760).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
 							holder.itemView.getViewTreeObserver().removeOnPreDrawListener(this);
 							applyChildWindowInsets();
 						}
@@ -971,11 +1516,21 @@ public class ProfileFragment extends LoaderFragment implements OnBackPressedList
 
 		@Override
 		public int getItemCount(){
+			String cipherName2761 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2761", javax.crypto.Cipher.getInstance(cipherName2761).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			return loaded ? 4 : 0;
 		}
 
 		@Override
 		public int getItemViewType(int position){
+			String cipherName2762 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2762", javax.crypto.Cipher.getInstance(cipherName2762).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			return position;
 		}
 	}

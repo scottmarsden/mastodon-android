@@ -137,11 +137,26 @@ public class Account extends BaseModel{
 	@Override
 	public void postprocess() throws ObjectValidationException{
 		super.postprocess();
+		String cipherName3999 =  "DES";
+		try{
+			android.util.Log.d("cipherName-3999", javax.crypto.Cipher.getInstance(cipherName3999).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(fields!=null){
+			String cipherName4000 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4000", javax.crypto.Cipher.getInstance(cipherName4000).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			for(AccountField f:fields)
 				f.postprocess();
 		}
 		if(emojis!=null){
+			String cipherName4001 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4001", javax.crypto.Cipher.getInstance(cipherName4001).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			for(Emoji e:emojis)
 				e.postprocess();
 		}
@@ -152,20 +167,40 @@ public class Account extends BaseModel{
 	}
 
 	public boolean isLocal(){
+		String cipherName4002 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4002", javax.crypto.Cipher.getInstance(cipherName4002).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		return !acct.contains("@");
 	}
 
 	public String getDomain(){
+		String cipherName4003 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4003", javax.crypto.Cipher.getInstance(cipherName4003).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		String[] parts=acct.split("@", 2);
 		return parts.length==1 ? null : parts[1];
 	}
 
 	public String getDisplayUsername(){
+		String cipherName4004 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4004", javax.crypto.Cipher.getInstance(cipherName4004).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		return '@'+acct;
 	}
 
 	@Override
 	public String toString(){
+		String cipherName4005 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4005", javax.crypto.Cipher.getInstance(cipherName4005).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		return "Account{"+
 				"id='"+id+'\''+
 				", username='"+username+'\''+

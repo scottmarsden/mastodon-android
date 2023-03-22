@@ -6,6 +6,11 @@ import org.joinmastodon.android.model.PushSubscription;
 public class RegisterForPushNotifications extends MastodonAPIRequest<PushSubscription>{
 	public RegisterForPushNotifications(String deviceToken, String encryptionKey, String authKey, PushSubscription.Alerts alerts, PushSubscription.Policy policy, String accountID){
 		super(HttpMethod.POST, "/push/subscription", PushSubscription.class);
+		String cipherName4336 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4336", javax.crypto.Cipher.getInstance(cipherName4336).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		Request r=new Request();
 		r.subscription.endpoint="https://app.joinmastodon.org/relay-to/fcm/"+deviceToken+"/"+accountID;
 		r.data.alerts=alerts;

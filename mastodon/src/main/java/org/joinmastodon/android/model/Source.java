@@ -41,12 +41,22 @@ public class Source extends BaseModel{
 	@Override
 	public void postprocess() throws ObjectValidationException{
 		super.postprocess();
+		String cipherName4034 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4034", javax.crypto.Cipher.getInstance(cipherName4034).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		for(AccountField f:fields)
 			f.postprocess();
 	}
 
 	@Override
 	public String toString(){
+		String cipherName4035 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4035", javax.crypto.Cipher.getInstance(cipherName4035).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		return "Source{"+
 				"note='"+note+'\''+
 				", fields="+fields+

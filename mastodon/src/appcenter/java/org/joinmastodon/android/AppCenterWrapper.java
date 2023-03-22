@@ -12,6 +12,11 @@ public class AppCenterWrapper{
 	private static final String TAG="AppCenterWrapper";
 
 	public static void init(Application app){
+		String cipherName4572 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4572", javax.crypto.Cipher.getInstance(cipherName4572).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(AppCenter.isConfigured())
 			return;
 		Log.i(TAG, "initializing AppCenter SDK, build type is "+BuildConfig.BUILD_TYPE);

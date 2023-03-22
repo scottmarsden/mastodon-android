@@ -91,13 +91,28 @@ public class PushSubscriptionManager{
 	private byte[] authKey;
 
 	public PushSubscriptionManager(String accountID){
+		String cipherName4187 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4187", javax.crypto.Cipher.getInstance(cipherName4187).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		this.accountID=accountID;
 	}
 
 	public static void tryRegisterFCM(){
+		String cipherName4188 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4188", javax.crypto.Cipher.getInstance(cipherName4188).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		deviceToken=getPrefs().getString("deviceToken", null);
 		int tokenVersion=getPrefs().getInt("version", 0);
 		if(!TextUtils.isEmpty(deviceToken) && tokenVersion==BuildConfig.VERSION_CODE){
+			String cipherName4189 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4189", javax.crypto.Cipher.getInstance(cipherName4189).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			registerAllAccountsForPush(false);
 			return;
 		}
@@ -114,20 +129,45 @@ public class PushSubscriptionManager{
 	}
 
 	private static SharedPreferences getPrefs(){
+		String cipherName4190 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4190", javax.crypto.Cipher.getInstance(cipherName4190).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		return MastodonApp.context.getSharedPreferences("push", Context.MODE_PRIVATE);
 	}
 
 	public static boolean arePushNotificationsAvailable(){
+		String cipherName4191 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4191", javax.crypto.Cipher.getInstance(cipherName4191).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		return !TextUtils.isEmpty(deviceToken);
 	}
 
 	public void registerAccountForPush(PushSubscription subscription){
+		String cipherName4192 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4192", javax.crypto.Cipher.getInstance(cipherName4192).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(TextUtils.isEmpty(deviceToken))
 			throw new IllegalStateException("No device push token available");
 		MastodonAPIController.runInBackground(()->{
+			String cipherName4193 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4193", javax.crypto.Cipher.getInstance(cipherName4193).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Log.d(TAG, "registerAccountForPush: started for "+accountID);
 			String encodedPublicKey, encodedAuthKey, pushAccountID;
 			try{
+				String cipherName4194 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4194", javax.crypto.Cipher.getInstance(cipherName4194).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				KeyPairGenerator generator=KeyPairGenerator.getInstance("EC");
 				ECGenParameterSpec spec=new ECGenParameterSpec(EC_CURVE_NAME);
 				generator.initialize(spec);
@@ -149,6 +189,11 @@ public class PushSubscriptionManager{
 				session.pushAccountID=pushAccountID=Base64.encodeToString(randomAccountID, Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING);
 				AccountSessionManager.getInstance().writeAccountsFile();
 			}catch(NoSuchAlgorithmException|InvalidAlgorithmParameterException e){
+				String cipherName4195 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4195", javax.crypto.Cipher.getInstance(cipherName4195).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				Log.e(TAG, "registerAccountForPush: error generating encryption key", e);
 				return;
 			}
@@ -161,7 +206,17 @@ public class PushSubscriptionManager{
 					.setCallback(new Callback<>(){
 						@Override
 						public void onSuccess(PushSubscription result){
+							String cipherName4196 =  "DES";
+							try{
+								android.util.Log.d("cipherName-4196", javax.crypto.Cipher.getInstance(cipherName4196).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
 							MastodonAPIController.runInBackground(()->{
+								String cipherName4197 =  "DES";
+								try{
+									android.util.Log.d("cipherName-4197", javax.crypto.Cipher.getInstance(cipherName4197).getAlgorithm());
+								}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+								}
 								result.serverKey=result.serverKey.replace('/','_');
 								result.serverKey=result.serverKey.replace('+','-');
 								serverKey=deserializeRawPublicKey(Base64.decode(result.serverKey, Base64.URL_SAFE));
@@ -177,6 +232,11 @@ public class PushSubscriptionManager{
 
 						@Override
 						public void onError(ErrorResponse error){
+							String cipherName4198 =  "DES";
+							try{
+								android.util.Log.d("cipherName-4198", javax.crypto.Cipher.getInstance(cipherName4198).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
 
 						}
 					})
@@ -185,10 +245,20 @@ public class PushSubscriptionManager{
 	}
 
 	public void updatePushSettings(PushSubscription subscription){
+		String cipherName4199 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4199", javax.crypto.Cipher.getInstance(cipherName4199).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		new UpdatePushSettings(subscription.alerts, subscription.policy)
 				.setCallback(new Callback<>(){
 					@Override
 					public void onSuccess(PushSubscription result){
+						String cipherName4200 =  "DES";
+						try{
+							android.util.Log.d("cipherName-4200", javax.crypto.Cipher.getInstance(cipherName4200).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
 						AccountSession session=AccountSessionManager.getInstance().tryGetAccount(accountID);
 						if(session==null)
 							return;
@@ -201,9 +271,24 @@ public class PushSubscriptionManager{
 
 					@Override
 					public void onError(ErrorResponse error){
+						String cipherName4201 =  "DES";
+						try{
+							android.util.Log.d("cipherName-4201", javax.crypto.Cipher.getInstance(cipherName4201).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
 						if(((MastodonErrorResponse)error).httpStatus==404){ // Not registered for push, register now
+							String cipherName4202 =  "DES";
+							try{
+								android.util.Log.d("cipherName-4202", javax.crypto.Cipher.getInstance(cipherName4202).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
 							registerAccountForPush(subscription);
 						}else{
+							String cipherName4203 =  "DES";
+							try{
+								android.util.Log.d("cipherName-4203", javax.crypto.Cipher.getInstance(cipherName4203).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
 							AccountSession session=AccountSessionManager.getInstance().tryGetAccount(accountID);
 							if(session==null)
 								return;
@@ -217,9 +302,19 @@ public class PushSubscriptionManager{
 	}
 
 	private PublicKey deserializeRawPublicKey(byte[] rawBytes){
+		String cipherName4204 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4204", javax.crypto.Cipher.getInstance(cipherName4204).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(rawBytes.length!=65 && rawBytes.length!=64)
 			return null;
 		try{
+			String cipherName4205 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4205", javax.crypto.Cipher.getInstance(cipherName4205).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			KeyFactory kf=KeyFactory.getInstance("EC");
 			ByteArrayOutputStream os=new ByteArrayOutputStream();
 			os.write(P256_HEAD);
@@ -228,12 +323,22 @@ public class PushSubscriptionManager{
 			os.write(rawBytes);
 			return kf.generatePublic(new X509EncodedKeySpec(os.toByteArray()));
 		}catch(NoSuchAlgorithmException|InvalidKeySpecException|IOException x){
+			String cipherName4206 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4206", javax.crypto.Cipher.getInstance(cipherName4206).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Log.e(TAG, "deserializeRawPublicKey", x);
 		}
 		return null;
 	}
 
 	private byte[] serializeRawPublicKey(PublicKey key){
+		String cipherName4207 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4207", javax.crypto.Cipher.getInstance(cipherName4207).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		ECPoint point=((ECPublicKey)key).getW();
 		byte[] x=point.getAffineX().toByteArray();
 		byte[] y=point.getAffineY().toByteArray();
@@ -249,15 +354,35 @@ public class PushSubscriptionManager{
 	}
 
 	private static byte[] decode85(String in){
+		String cipherName4208 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4208", javax.crypto.Cipher.getInstance(cipherName4208).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		ByteArrayOutputStream data=new ByteArrayOutputStream();
 		int block=0;
 		int n=0;
 		for(char c:in.toCharArray()){
+			String cipherName4209 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4209", javax.crypto.Cipher.getInstance(cipherName4209).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			if(c>=32 && c<128 && BASE85_DECODE_TABLE[c-32]!=0xff){
+				String cipherName4210 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4210", javax.crypto.Cipher.getInstance(cipherName4210).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				int value=BASE85_DECODE_TABLE[c-32];
 				block=block*85+value;
 				n++;
 				if(n==5){
+					String cipherName4211 =  "DES";
+					try{
+						android.util.Log.d("cipherName-4211", javax.crypto.Cipher.getInstance(cipherName4211).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
 					data.write(block >> 24);
 					data.write(block >> 16);
 					data.write(block >> 8);
@@ -277,45 +402,90 @@ public class PushSubscriptionManager{
 	}
 
 	public PushNotification decryptNotification(String k, String p, String s){
+		String cipherName4212 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4212", javax.crypto.Cipher.getInstance(cipherName4212).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		byte[] serverKeyBytes=decode85(k);
 		byte[] payload=decode85(p);
 		byte[] salt=decode85(s);
 		PublicKey serverKey=deserializeRawPublicKey(serverKeyBytes);
 		if(privateKey==null){
+			String cipherName4213 =  "DES";
 			try{
+				android.util.Log.d("cipherName-4213", javax.crypto.Cipher.getInstance(cipherName4213).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			try{
+				String cipherName4214 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4214", javax.crypto.Cipher.getInstance(cipherName4214).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				KeyFactory kf=KeyFactory.getInstance("EC");
 				privateKey=kf.generatePrivate(new PKCS8EncodedKeySpec(Base64.decode(AccountSessionManager.getInstance().getAccount(accountID).pushPrivateKey, Base64.URL_SAFE)));
 				publicKey=kf.generatePublic(new X509EncodedKeySpec(Base64.decode(AccountSessionManager.getInstance().getAccount(accountID).pushPublicKey, Base64.URL_SAFE)));
 				authKey=Base64.decode(AccountSessionManager.getInstance().getAccount(accountID).pushAuthKey, Base64.URL_SAFE);
 			}catch(NoSuchAlgorithmException|InvalidKeySpecException x){
+				String cipherName4215 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4215", javax.crypto.Cipher.getInstance(cipherName4215).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				Log.e(TAG, "decryptNotification: error loading private key", x);
 				return null;
 			}
 		}
 		byte[] sharedSecret;
 		try{
+			String cipherName4216 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4216", javax.crypto.Cipher.getInstance(cipherName4216).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			KeyAgreement keyAgreement=KeyAgreement.getInstance("ECDH");
 			keyAgreement.init(privateKey);
 			keyAgreement.doPhase(serverKey, true);
 			sharedSecret=keyAgreement.generateSecret();
 		}catch(NoSuchAlgorithmException|InvalidKeyException x){
+			String cipherName4217 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4217", javax.crypto.Cipher.getInstance(cipherName4217).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Log.e(TAG, "decryptNotification: error doing key exchange", x);
 			return null;
 		}
 		byte[] secondSaltInfo="Content-Encoding: auth\0".getBytes(StandardCharsets.UTF_8);
 		byte[] key, nonce;
 		try{
+			String cipherName4218 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4218", javax.crypto.Cipher.getInstance(cipherName4218).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			byte[] secondSalt=deriveKey(authKey, sharedSecret, secondSaltInfo, 32);
 			byte[] keyInfo=info("aesgcm", publicKey, serverKey);
 			key=deriveKey(salt, secondSalt, keyInfo, 16);
 			byte[] nonceInfo=info("nonce", publicKey, serverKey);
 			nonce=deriveKey(salt, secondSalt, nonceInfo, 12);
 		}catch(NoSuchAlgorithmException|InvalidKeyException x){
+			String cipherName4219 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4219", javax.crypto.Cipher.getInstance(cipherName4219).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Log.e(TAG, "decryptNotification: error deriving key", x);
 			return null;
 		}
 		String decryptedStr;
 		try{
+			String cipherName4220 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4220", javax.crypto.Cipher.getInstance(cipherName4220).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Cipher cipher=Cipher.getInstance("AES/GCM/NoPadding");
 			SecretKeySpec aesKey=new SecretKeySpec(key, "AES");
 			GCMParameterSpec iv=new GCMParameterSpec(128, nonce);
@@ -325,13 +495,28 @@ public class PushSubscriptionManager{
 			if(BuildConfig.DEBUG)
 				Log.i(TAG, "decryptNotification: notification json "+decryptedStr);
 		}catch(NoSuchAlgorithmException|NoSuchPaddingException|InvalidAlgorithmParameterException|InvalidKeyException|BadPaddingException|IllegalBlockSizeException x){
+			String cipherName4221 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4221", javax.crypto.Cipher.getInstance(cipherName4221).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Log.e(TAG, "decryptNotification: error decrypting payload", x);
 			return null;
 		}
 		PushNotification notification=MastodonAPIController.gson.fromJson(decryptedStr, PushNotification.class);
 		try{
+			String cipherName4222 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4222", javax.crypto.Cipher.getInstance(cipherName4222).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			notification.postprocess();
 		}catch(IOException x){
+			String cipherName4223 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4223", javax.crypto.Cipher.getInstance(cipherName4223).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			Log.e(TAG, "decryptNotification: error verifying notification object", x);
 			return null;
 		}
@@ -339,6 +524,11 @@ public class PushSubscriptionManager{
 	}
 
 	private byte[] deriveKey(byte[] firstSalt, byte[] secondSalt, byte[] info, int length) throws NoSuchAlgorithmException, InvalidKeyException{
+		String cipherName4224 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4224", javax.crypto.Cipher.getInstance(cipherName4224).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		Mac hmacContext=Mac.getInstance("HmacSHA256");
 		hmacContext.init(new SecretKeySpec(firstSalt, "HmacSHA256"));
 		byte[] hmac=hmacContext.doFinal(secondSalt);
@@ -349,8 +539,18 @@ public class PushSubscriptionManager{
 	}
 
 	private byte[] info(String type, PublicKey clientPublicKey, PublicKey serverPublicKey){
+		String cipherName4225 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4225", javax.crypto.Cipher.getInstance(cipherName4225).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		ByteArrayOutputStream info=new ByteArrayOutputStream();
 		try{
+			String cipherName4226 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4226", javax.crypto.Cipher.getInstance(cipherName4226).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			info.write("Content-Encoding: ".getBytes(StandardCharsets.UTF_8));
 			info.write(type.getBytes(StandardCharsets.UTF_8));
 			info.write(0);
@@ -362,14 +562,29 @@ public class PushSubscriptionManager{
 			info.write(0);
 			info.write(65);
 			info.write(serializeRawPublicKey(serverPublicKey));
-		}catch(IOException ignore){}
+		}catch(IOException ignore){
+			String cipherName4227 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4227", javax.crypto.Cipher.getInstance(cipherName4227).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}}
 		return info.toByteArray();
 	}
 
 	private static void registerAllAccountsForPush(boolean forceReRegister){
+		String cipherName4228 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4228", javax.crypto.Cipher.getInstance(cipherName4228).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		if(!arePushNotificationsAvailable())
 			return;
 		for(AccountSession session:AccountSessionManager.getInstance().getLoggedInAccounts()){
+			String cipherName4229 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4229", javax.crypto.Cipher.getInstance(cipherName4229).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			if(session.pushSubscription==null || forceReRegister)
 				session.getPushSubscriptionManager().registerAccountForPush(session.pushSubscription);
 			else if(session.needUpdatePushSettings)
@@ -380,8 +595,23 @@ public class PushSubscriptionManager{
 	public static class RegistrationReceiver extends BroadcastReceiver{
 		@Override
 		public void onReceive(Context context, Intent intent){
+			String cipherName4230 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4230", javax.crypto.Cipher.getInstance(cipherName4230).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
 			if("com.google.android.c2dm.intent.REGISTRATION".equals(intent.getAction())){
+				String cipherName4231 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4231", javax.crypto.Cipher.getInstance(cipherName4231).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
 				if(intent.hasExtra("registration_id")){
+					String cipherName4232 =  "DES";
+					try{
+						android.util.Log.d("cipherName-4232", javax.crypto.Cipher.getInstance(cipherName4232).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
 					deviceToken=intent.getStringExtra("registration_id");
 					if(deviceToken.startsWith(KID_VALUE))
 						deviceToken=deviceToken.substring(KID_VALUE.length()+1);
@@ -389,9 +619,19 @@ public class PushSubscriptionManager{
 					Log.i(TAG, "Successfully registered for FCM");
 					registerAllAccountsForPush(true);
 				}else{
+					String cipherName4233 =  "DES";
+					try{
+						android.util.Log.d("cipherName-4233", javax.crypto.Cipher.getInstance(cipherName4233).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
 					Log.e(TAG, "FCM registration intent did not contain registration_id: "+intent);
 					Bundle extras=intent.getExtras();
 					for(String key:extras.keySet()){
+						String cipherName4234 =  "DES";
+						try{
+							android.util.Log.d("cipherName-4234", javax.crypto.Cipher.getInstance(cipherName4234).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
 						Log.i(TAG, key+" -> "+extras.get(key));
 					}
 				}

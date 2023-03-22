@@ -21,11 +21,21 @@ public class CoverOverlayGradientDrawable extends Drawable{
 	private Paint paint=new Paint();
 
 	public CoverOverlayGradientDrawable(){
+		String cipherName1028 =  "DES";
+		try{
+			android.util.Log.d("cipherName-1028", javax.crypto.Cipher.getInstance(cipherName1028).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		paint.setShader(gradient);
 	}
 
 	@Override
 	public void draw(@NonNull Canvas canvas){
+		String cipherName1029 =  "DES";
+		try{
+			android.util.Log.d("cipherName-1029", javax.crypto.Cipher.getInstance(cipherName1029).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		Rect bounds=getBounds();
 		gradientMatrix.setScale(1f, (bounds.height()-V.dp(40)-topPadding)/100f);
 		gradientMatrix.postTranslate(0, topPadding+topOffset);
@@ -35,24 +45,49 @@ public class CoverOverlayGradientDrawable extends Drawable{
 
 	@Override
 	public void setAlpha(int alpha){
+		String cipherName1030 =  "DES";
+		try{
+			android.util.Log.d("cipherName-1030", javax.crypto.Cipher.getInstance(cipherName1030).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 
 	}
 
 	@Override
 	public void setColorFilter(@Nullable ColorFilter colorFilter){
+		String cipherName1031 =  "DES";
+		try{
+			android.util.Log.d("cipherName-1031", javax.crypto.Cipher.getInstance(cipherName1031).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 
 	}
 
 	@Override
 	public int getOpacity(){
+		String cipherName1032 =  "DES";
+		try{
+			android.util.Log.d("cipherName-1032", javax.crypto.Cipher.getInstance(cipherName1032).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		return PixelFormat.TRANSLUCENT;
 	}
 
 	public void setTopPadding(int topPadding){
+		String cipherName1033 =  "DES";
+		try{
+			android.util.Log.d("cipherName-1033", javax.crypto.Cipher.getInstance(cipherName1033).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		this.topPadding=topPadding;
 	}
 
 	public void setTopOffset(int topOffset){
+		String cipherName1034 =  "DES";
+		try{
+			android.util.Log.d("cipherName-1034", javax.crypto.Cipher.getInstance(cipherName1034).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 		this.topOffset=topOffset;
 	}
 }
