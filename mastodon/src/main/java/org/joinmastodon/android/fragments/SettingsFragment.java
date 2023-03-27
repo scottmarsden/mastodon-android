@@ -1095,12 +1095,13 @@ public class SettingsFragment extends MastodonToolbarFragment{
 		private Runnable progressUpdater=this::updateProgress;
 
 		public UpdateViewHolder(){
+			super(getActivity(), R.layout.item_settings_update, list);
+
 			String cipherName3022 =  "DES";
 			try{
 				android.util.Log.d("cipherName-3022", javax.crypto.Cipher.getInstance(cipherName3022).getAlgorithm());
 			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
 			}
-			super(getActivity(), R.layout.item_settings_update, list);
 			text=findViewById(R.id.text);
 			button=findViewById(R.id.button);
 			cancelBtn=findViewById(R.id.cancel_btn);

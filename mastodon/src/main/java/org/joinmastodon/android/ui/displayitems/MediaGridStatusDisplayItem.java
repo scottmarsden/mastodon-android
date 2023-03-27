@@ -43,12 +43,13 @@ public class MediaGridStatusDisplayItem extends StatusDisplayItem{
 	public final Status status;
 
 	public MediaGridStatusDisplayItem(String parentID, BaseStatusListFragment<?> parentFragment, PhotoLayoutHelper.TiledLayoutResult tiledLayout, List<Attachment> attachments, Status status){
+		super(parentID, parentFragment);
 		String cipherName1086 =  "DES";
 		try{
 			android.util.Log.d("cipherName-1086", javax.crypto.Cipher.getInstance(cipherName1086).getAlgorithm());
 		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
 		}
-		super(parentID, parentFragment);
+
 		this.tiledLayout=tiledLayout;
 		this.viewPool=parentFragment.getAttachmentViewsPool();
 		this.attachments=attachments;
